@@ -90,22 +90,12 @@ def main():
     print("Smaž předmět: [del_subject]")
     print("Zobrazit průměr známek: [average_grade]")
   
+    commands = {"add_class": add_class, "add_student": add_student, "add_subject": add_subject,
+                "add_grade": add_grade, "del_class": delete_class, "del_student": delete_student, "del_subject": delete_subject}
     while True:
         command = input("Zadejte příkaz: ")
-        if command == "add_class": 
-            school = add_class(school)
-        elif command == "add_student": 
-            school = add_student(school)
-        elif command == "add_subject": 
-            school = add_subject(school)
-        elif command == "add_grade": 
-            school = add_grade(school)
-        elif command == "del_class": 
-            school = delete_class(school)
-        elif command == "del_student": 
-            school = delete_student(school)
-        elif command == "del_subject": 
-            school = delete_subject(school)
-        elif command == "average_grade":
+        if command == "average_grade":
             get_average_grade(school)
+        elif command in commands:
+            school = commands[command](school)
 main()
